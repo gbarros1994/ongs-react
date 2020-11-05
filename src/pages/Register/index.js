@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
-
+import { Link, useHistory } from 'react-router-dom';
 import api from '../../services/api';
-
-
+import { FiArrowLeft } from 'react-icons/fi';
 import './style.css';
 
 import logoImg from '../../assets/logo.svg';
-import { useState } from 'react';
+
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -17,16 +14,23 @@ export default function Register() {
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
 
-    function handleRegister(e) {
+    const history = useHistory();
+
+    async function handleRegister(e) {
         e.preventDefault();
 
-        console.log({
+        const data = {
           name,
           email,
           whatsapp,
           city,
           uf,
-        })
+        };
+
+       const response = await api.post('ongs', data);
+
+       alert(`Seu ID de acesso ${response.data.id}`);
+       history.push('/');
     }
 
     return (
