@@ -1,5 +1,5 @@
 <h1 align="center">
-Ongs project
+-- Ongs project --
 </h1>
 
 <p align="center">Project for React studies.</p>
